@@ -20,6 +20,10 @@ The **desasiv-task** application is a Book Explorer that allows users to:
 
 > **Note**: This project leverages new capabilities from **React 19** and **Next.js 15**, including asynchronous Server Components and improved caching and streaming mechanisms to enhance performance and developer experience.
 
+## 🌐 Live Demo
+
+🔗 **[Visit the deployed app on Vercel →](https://desasiv-task.vercel.app/)**
+
 ## 🧰 Built Using
 
 - **Next.js App Router (v15)**
@@ -70,8 +74,6 @@ Data is sourced from the **Google Books API**:
 
 - Search: `https://www.googleapis.com/books/v1/volumes?q=SEARCH_TERM`  
 - Book by ID: `https://www.googleapis.com/books/v1/volumes/BOOK_ID`  
-
-No authentication key required for basic queries.
 
 ## 📦 Deployment
 
