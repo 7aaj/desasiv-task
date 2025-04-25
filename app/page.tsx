@@ -31,13 +31,17 @@ export default async function Home({
       </section>
       <section className="section_container ">
         <div className="flex items-center justify-between w-full">
-          <p className="text-30-semibold">
+          <p className="text-30-semibold dark:!text-white">
             {cleanQuery
               ? `Search results for "${cleanQuery}"`
               : "Popular Books"}
           </p>
 
-          {subject && <span className="category-tag">Category: {subject}</span>}
+          {subject && (
+            <span className="category-tag dark:!bg-black">
+              Category: {subject}
+            </span>
+          )}
         </div>
         <BookList q={query || "SEARCH_TERM"} />
       </section>

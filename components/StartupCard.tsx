@@ -27,7 +27,9 @@ const StartupCard = ({ book, query }: { book: BookType; query: string }) => {
   return (
     <li className="startup-card group flex flex-col justify-between group">
       <div className="flex-between ">
-        <p className="startup_card_date">{formatDate(publishedDate)}</p>
+        <p className="startup_card_date dark:text-black">
+          {formatDate(publishedDate)}
+        </p>
         <FavoriteStar bookId={id} />
       </div>
       <div className="flex-between mt-5 gap-5">

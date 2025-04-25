@@ -48,9 +48,9 @@ export default function BookDetails({
         />
         <div className="space-y-5 mt-10 max-w-4xl mx-auto">
           <div className="flex items-center gap-3">
-            <p className="category-tag">publisher</p>
+            <p className="category-tag dark:!bg-black">publisher</p>
             <p
-              className="text-20-medium"
+              className="text-20-medium  dark:!text-white "
               dangerouslySetInnerHTML={{
                 __html: cleanDescription(bookInfo?.publisher),
               }}
@@ -62,7 +62,7 @@ export default function BookDetails({
               className="flex gap-2 items-center mb-3"
             >
               <div>
-                <p className="text-20-medium">
+                <p className="text-20-medium dark:!text-white">
                   {bookInfo?.authors?.join(", ") || "Unknown Author"}
                 </p>
                 <p className="text-16-medium !text-black-300">
@@ -72,15 +72,15 @@ export default function BookDetails({
             </Link>
             <Link
               href={`/?query=SEARCH_TERM+${categoryQuery}`}
-              className="text-16-medium category-tag hover:!bg-primary hover:!text-white transition-all duration-500"
+              className="text-16-medium category-tag hover:!bg-primary hover:!text-white transition-all duration-500 dark:!bg-black dark:!text-white"
             >
               {primaryCategory}
             </Link>
           </div>
-          <h3 className="text-30-bold">Book Details</h3>
+          <h3 className="text-30-bold dark:!text-white">Book Details</h3>
           {cleanDescription(bookInfo?.description) ? (
             <article
-              className="prose max-w-4xl font-work-sans break-all"
+              className="prose max-w-4xl font-work-sans break-all dark:text-white-100 "
               dangerouslySetInnerHTML={{
                 __html: cleanDescription(bookInfo?.description),
               }}
