@@ -5,6 +5,7 @@ import { GETbookById } from "@/services";
 import { BookType } from "@/lib/types";
 import StartupCard from "@/components/StartupCard";
 import { useQueries } from "@tanstack/react-query";
+import Loading from "@/app/loading";
 
 export default function FavoritesPage() {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
@@ -25,11 +26,6 @@ export default function FavoritesPage() {
   const error = queries.find((q) => q.isError)?.error;
   const books = queries.map((q) => q.data).filter(Boolean) as BookType[];
 
-  if (loading) return <div className="p-4">Loading favorite books...</div>;
-  if (error) return <div className="p-4">Error loading books</div>;
-  if (books.length === 0)
-    return <div className="p-4">No favorites added yet.</div>;
-
   return (
     <>
       <section className="pink_container pattern">
@@ -42,11 +38,19 @@ export default function FavoritesPage() {
           keep your personal library growing.
         </p>
       </section>
-      <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 section_container">
-        {books.map((book) => (
-          <StartupCard key={book.id} book={book} query="favorites" />
-        ))}
-      </div>
+      {loading ? (
+        <div className="section_container p-4">
+          <Loading />
+        </div>
+      ) : error ? (
+        <div className="section_container p-4">Error loading books</div>
+      ) : (
+        <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 section_container">
+          {books.map((book) => (
+            <StartupCard key={book.id} book={book} query="favorites" />
+          ))}
+        </div>
+      )}
     </>
   );
 }

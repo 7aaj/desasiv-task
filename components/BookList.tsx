@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/loading";
 import StartupCard from "@/components/StartupCard";
 import {
   Pagination,
@@ -14,11 +15,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 const BookList = ({ q }: { q: string }) => {
-  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 9;
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["items", q],
+    queryKey: ["books", q],
     queryFn: () => GETbooksData(q, 0, 40),
   });
 
@@ -26,7 +27,7 @@ const BookList = ({ q }: { q: string }) => {
     setCurrentPage(1);
   }, [q]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading />;
   if (error instanceof Error) return <div>error: {error.toString()}</div>;
 
   const totalItems = data?.items?.length || 0;

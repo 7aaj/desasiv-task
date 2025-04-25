@@ -16,9 +16,10 @@ export function formatDate(date: string): string {
   return parsedDate.toLocaleDateString("en-US", options);
 }
 
+// google books api response comes with encoded html elements
 export function cleanDescription(raw: string): string {
   return raw
     ?.replace(/\\u003c/g, "<")
     ?.replace(/\\u003e/g, ">")
-    ?.replace(/<[^>]*>/g, ""); // strip HTML
+    ?.replace(/<[^>]*>/g, "");
 }

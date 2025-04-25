@@ -20,7 +20,7 @@ const StartupCard = ({ book, query }: { book: BookType; query: string }) => {
   } = book;
 
   const primaryCategory =
-    categories?.[0]?.split(" ")[0].replace(/"/g, "+") || "No Category";
+    categories?.[0]?.split(" ")[0].replace(",", "") || "No Category";
 
   const categoryQuery = `subject:${primaryCategory}`;
 

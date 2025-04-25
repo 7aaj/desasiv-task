@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { cleanDescription, formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import BookDetailsSkeleton from "@/components/BookDetailsSkeleton";
 
 export default function BookDetails({
   params,
@@ -15,11 +16,11 @@ export default function BookDetails({
   const { id } = use(params);
 
   const { data, isLoading, error } = useQuery({
-    queryKey: [id],
+    queryKey: ["bookDetails", id],
     queryFn: () => GETbookById(id),
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <BookDetailsSkeleton />;
   if (error) return <p>Error fetching book.</p>;
   const bookInfo = data?.volumeInfo;
   const primaryCategory =

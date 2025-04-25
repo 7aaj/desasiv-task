@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
 class APIService {
   baseApi!: AxiosInstance;
+  API_KEY = process.env.NEXT_PUBLIC_GOOGLE_BOOKS_API_KEY;
 
   init() {
     this.baseApi = axios.create({
@@ -9,6 +10,10 @@ class APIService {
     });
     this.baseApi.interceptors.request.use(
       async (config) => {
+        config.params = {
+          ...(config.params || {}),
+          key: this.API_KEY,
+        };
         return config;
       },
       (error) => {

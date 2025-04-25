@@ -7,8 +7,8 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  console.log(await searchParams);
-  const subjectMatch = query?.match(/subject:([^\s]+)/);
+
+  const subjectMatch = query?.match(/subject:(.+)/);
   const subject = subjectMatch ? subjectMatch[1] : null;
 
   const cleanQuery = query
@@ -37,7 +37,7 @@ export default async function Home({
               : "Popular Books"}
           </p>
 
-          {subject && <span className="category-tag">{subject}</span>}
+          {subject && <span className="category-tag">Category: {subject}</span>}
         </div>
         <BookList q={query || "SEARCH_TERM"} />
       </section>
