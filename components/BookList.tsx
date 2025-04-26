@@ -1,5 +1,5 @@
 "use client";
-import Loading from "@/app/loading";
+import BookSkeleton from "@/components/BookSkeleton";
 import StartupCard from "@/components/StartupCard";
 import {
   Pagination,
@@ -27,7 +27,7 @@ const BookList = ({ q }: { q: string }) => {
     setCurrentPage(1);
   }, [q]);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <BookSkeleton />;
   if (error instanceof Error) return <div>error: {error.toString()}</div>;
 
   const totalItems = data?.items?.length || 0;

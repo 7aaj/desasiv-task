@@ -9,7 +9,7 @@ const SearchForm = ({ query }: { query?: string }) => {
         type="text"
         name="query"
         defaultValue={query}
-        className="search-input placeholder:font-semibold placeholder:text-black/62"
+        className="search-input placeholder:font-semibold placeholder:text-black/62 !text-black"
         placeholder="Search Startups"
       />
 

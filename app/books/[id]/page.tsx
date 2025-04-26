@@ -21,6 +21,7 @@ export default function BookDetails({
   });
 
   if (isLoading) return <BookDetailsSkeleton />;
+  // if (isLoading) return <p>loading....</p>;
   if (error) return <p>Error fetching book.</p>;
   const bookInfo = data?.volumeInfo;
   const primaryCategory =

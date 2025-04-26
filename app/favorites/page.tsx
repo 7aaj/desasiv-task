@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { GETbookById } from "@/services";
-import { BookType } from "@/lib/types";
+import BookSkeleton from "@/components/BookSkeleton";
 import StartupCard from "@/components/StartupCard";
+import { BookType } from "@/lib/types";
+import { GETbookById } from "@/services";
 import { useQueries } from "@tanstack/react-query";
-import Loading from "@/app/loading";
+import { useEffect, useState } from "react";
 
 export default function FavoritesPage() {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
@@ -40,7 +40,7 @@ export default function FavoritesPage() {
       </section>
       {loading ? (
         <div className="section_container p-4">
-          <Loading />
+          <BookSkeleton />
         </div>
       ) : error ? (
         <div className="section_container p-4">Error loading books</div>
